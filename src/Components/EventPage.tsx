@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { EventEvent } from './Models';
 
-function EventPage(props: { date: Date, sendData: (event: EventEvent) => void }) {
+function EventPage(props: {
+    date: Date,
+    sendData: (event: EventEvent) => void
+}) {
     let [event, setEvent] = useState<EventEvent>({
         name: '',
         adress: '',

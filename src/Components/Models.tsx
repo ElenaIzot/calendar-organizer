@@ -28,7 +28,7 @@ export function isNote(obj: any): obj is EventNote {
 
 export type CalendarEvent = EventEvent | EventHoliday | EventNote;
 
-export function getEventsFronStorage(day: Date): CalendarEvent[] {
+export function getEventsFromStorage(day: Date): CalendarEvent[] {
     const key = day.toLocaleDateString();
     return JSON.parse(localStorage.getItem(key) || '[]')
 }
