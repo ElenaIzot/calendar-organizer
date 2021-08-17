@@ -1,0 +1,137 @@
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+    .wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .wrapper {
+        display: flex;
+        justify-content: space-around;
+    }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+    .header {
+        margin-bottom: $step;
+        &__title {
+            margin-left: $step;
+        }
+    }
+    .content {
+        padding: $step;
+    }
+    .wrapper {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .calendar {
+        padding: $step;
+        margin: 16px auto;
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+    .header {
+      margin-bottom: none;
+        &__title {
+            margin-left: $step;
+        }
+    }
+    .content {
+        padding: $step;
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    .calendar {
+        width: 350px;
+        padding: $step;
+        margin: 8px auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        margin-bottom: none;
+        &__title {
+            margin-left: $step;
+        }
+    }
+    .content {
+        padding: $step;
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    .calendar {
+        padding: $step;
+        margin: 16px auto;
+    }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+    .header {
+        margin-bottom: none;
+        &__title {
+            margin-left: $step;
+        }
+    }
+    .content {
+        padding: $step;
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    .calendar {
+        padding: $step;
+        margin: 16px auto;
+    }
+}
+
+/* Iphone 5 */
+@media (max-width: 320px) {
+    body {
+        font-size: 12px;
+    }
+    .header {
+        margin-bottom: $step;
+        &__title {
+            margin-left: $step;
+        }
+    }
+    .content {
+        padding: $step;
+    }
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+
+    .calendar {
+        width: 100%;
+        padding: $step;
+        margin: 16px auto;
+    }
+}

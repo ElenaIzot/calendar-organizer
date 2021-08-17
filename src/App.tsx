@@ -1,22 +1,24 @@
 import React from 'react';
-import './App.css';
 import 'react-calendar/dist/Calendar.css';
+import './style/main.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Link, Redirect, Route, Switch } from 'react-router-dom';
 import MyCalendar from './Components/Calendar';
-import HolidayPage from './Components/HolidayPage';
-import EventPage from './Components/EventPage';
-import NotePage from './Components/NotePage';
+import Holiday from './Components/Holiday';
+import Event from './Components/Event';
+import Note from './Components/Note';
+import { Header } from './Components/Header';
 
 function App() {
 
   return (<>
     <Router>
-      <header><h3>Календарь</h3></header>
+      <Header />
       <Switch>
         <Route exact path='/' component={MyCalendar} />
-        <Route exact path='/add/holiday' component={HolidayPage} />
-        <Route exact path='/add/event' component={EventPage} />
-        <Route exact path='/add/note' component={NotePage} />
+        <Route exact path='/holiday' component={Holiday} />
+        <Route exact path='/event' component={Event} />
+        <Route exact path='/note' component={Note} />
       </Switch>
     </Router>
   </>

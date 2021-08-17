@@ -1,0 +1,23 @@
+.calendar {
+    padding: $step;
+    margin: 42px auto;
+    border-radius: 4px;
+}
+
+.react-calendar__tile--now {
+    background: #f05f5f;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+    background: #da1a1a;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    padding: 0.5em;
+    text-decoration: none;
+  }
+  .react-calendar__month-view__weekNumbers {
+    font-weight: bold;
+    text-decoration: none;
+  }

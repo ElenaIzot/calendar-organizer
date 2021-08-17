@@ -1,20 +1,18 @@
 import { useState } from 'react';
 import Calendar from "react-calendar";
-import EventPage from './EventPage';
-import HolidayPage from './HolidayPage';
+import Event from './Event';
+import Holiday from './Holiday';
+import Note from './Note';
 import {
     CalendarEvent, getEventsFromStorage, isEvent,
     isHoliday, isNote, saveEventsToStorage
 } from './Models';
-import NotePage from './NotePage';
-import pencilOutlineWhite from '../img/pencilOutlineWhite.png'
-import trashCanWhite from '../img/trashCanWhite.png'
+import { Tab, Tabs } from 'react-bootstrap';
 
 function MyCalendar() {
     const [value, onChange] = useState(new Date());
     const [day, setDay] = useState(value);
     const [componentEvents, setComponentEvents] = useState<Array<CalendarEvent>>(getEventsFromStorage(day));
-    const [visible, setVisible] = useState<boolean>(false);
 
     const onEventCreate = (event: CalendarEvent) => {
         const events = [...componentEvents, event];
@@ -28,20 +26,11 @@ function MyCalendar() {
         setComponentEvents(getEventsFromStorage(value));
     }
 
-    function addEvents(): void {
-        setVisible(true);
-    }
-
-    function closeEvents(): void {
-        setVisible(false);
-    };
-
     function deleteEvent(e: any): void {
         e.preventDefault();
         saveEventsToStorage(day, [])
-        alert('Событие удалено') //нет перерисовки при удалении
+        alert('Событие удалено. Обновите страницу') //нет перерисовки при удалении
     }
-
 
     let renderedHoliday;
     let renderedEvent;
@@ -53,58 +42,70 @@ function MyCalendar() {
             let events = JSON.parse(localStorage.getItem(`${key}`) || '[]');
             for (const event of events) {
                 if (isNote(event)) {
-                    renderedNotes = (<div className="form">
-                        <div className='content__item'>
-                            <p className='events__title'>Заметка:</p>
-                            <button className="btn btn_icon">
-                                <img src={pencilOutlineWhite} alt="Edit" />
-                            </button>
-                            <button className="btn btn_icon">
-                                <img src={trashCanWhite} alt="Delete" />
+                    renderedNotes = (<div className="card">
+                        <div className="card-body__item card-body">
+                            <h6 className="card__title card-title">
+                                Заметка
+                            </h6>
+                            <button type="button"
+                                className="btn btn-outline-danger btn-sm"
+                                onClick={deleteEvent}>
+                                Удалить
                             </button>
                         </div>
-                        <label className='form__item'>
-                            <p className='events__title'>Заметка: {event.name}</p>
-                        </label  >
-                        <label className='form__item'>
-                            <p className='events__title'>Текст: {event.text}
-                            </p>
-                        </label>
-                    </div>
-                    );
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">
+                                Заметка: {event.name}
+                            </li>
+                            <li className="list-group-item">
+                                Текст: {event.text}
+                            </li>
+                        </ul>
+                    </div>);
                 } else if (isHoliday(event)) {
-                    renderedHoliday = (<div className="form">
-                        <div className='content__item'>
-                            <p className='events__title'>Праздник:</p>
-
-                            <button className="btn btn_icon" onClick={deleteEvent}>
-                                <img src={trashCanWhite} alt="Delete" />
+                    renderedHoliday = (<div className="card">
+                        <div className="card-body__item card-body">
+                            <h6 className="card__title card-title">
+                                Праздник
+                            </h6>
+                            <button type="button"
+                                className="btn btn-outline-danger btn-sm"
+                                onClick={deleteEvent}>
+                                Удалить
                             </button>
                         </div>
-                        <p className='events__title'>{event.name}</p>
-                        <p className='events__title'>Бюджет: {event.budget}</p>
-                    </div>
-                    );
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">
+                                Название: {event.name}
+                            </li>
+                            <li className="list-group-item">
+                                Бюджет: {event.budget}
+                            </li>
+                        </ul>
+                    </div>);
                 } else if (isEvent(event)) {
-                    renderedEvent = (<div className="form">
-                        <div className='content__item'>
-                            <p className='events__title'>Мероприятие:</p>
-
-                            <button className="btn btn_icon" onClick={deleteEvent}>
-                                <img src={trashCanWhite} alt="Delete" />
+                    renderedEvent = (<div className="card">
+                        <div className="card-body__item card-body">
+                            <h6 className="card__title card-title">
+                                Мероприятие
+                            </h6>
+                            <button type="button"
+                                className="btn btn-outline-danger btn-sm"
+                                onClick={deleteEvent}>
+                                Удалить
                             </button>
                         </div>
-                        <label className='form__item'>
-                            <p className='events__title'>Мероприятие: {event.name}</p>
-                        </label  >
-                        <label className='form__item'>
-                            <p className='events__title'>Адрес: {event.adress}
-                            </p>
-                        </label>
-                        <label className='form__item'>
-                            <p className='events__title'>Время: {event.time}
-                            </p>
-                        </label>
+                        <ul className="list-group list-group-flush">
+                            <li className="list-group-item">
+                                Мероприятие: {event.name}
+                            </li>
+                            <li className="list-group-item">
+                                Адрес: {event.adress}
+                            </li>
+                            <li className="list-group-item">
+                                Время: {event.time}
+                            </li>
+                        </ul>
                     </div>
                     );
                 }
@@ -112,40 +113,44 @@ function MyCalendar() {
         }
     }
 
-    let renderEvents;
+    const classCalendar = 'calendar react-calendar';
 
-    if (visible == true) {
-        renderEvents = <div className='events'>
-            <HolidayPage date={day} sendData={onEventCreate} />
-            <EventPage date={day} sendData={onEventCreate} />
-            <NotePage date={day} sendData={onEventCreate} />
-        </div>
-    } else {
-        renderEvents = <div className='events'> Пусто </div>
-    }
-
-    return (
-        <section className="wrap">
-            <div className="calendar">
-                <Calendar
-                    className="react-calendar"
-                    onChange={onChange}
-                    value={value}
-                    onClickDay={onClickDay}
-                />
-                <div className='events__item'>
-                    <div className="form">
-                        <p className='events__title'>Дата: {day.toLocaleDateString()}</p>
-                    </div>
-                    {renderedHoliday}
-                    {renderedEvent}
-                    {renderedNotes}
+    return (<div className="container-xxl wrapper">
+        <section className="content">
+            <Calendar
+                className={classCalendar}
+                onChange={onChange}
+                value={value}
+                onClickDay={onClickDay}
+            />
+            <div className="card">
+                <div className="card-body">
+                    <h5 className="card__date card-title">
+                        Текущая дата:
+                        <span className="card__date_number">
+                            {day.toLocaleDateString()}
+                        </span>
+                    </h5>
                 </div>
-                <button onClick={addEvents}>Добавить</button>
-                <button onClick={closeEvents}>Скрыть</button>
             </div>
-            {renderEvents}
-        </section>);
+            {renderedHoliday}
+            {renderedEvent}
+            {renderedNotes}
+        </section>
+        <section className="content">
+            <Tabs defaultActiveKey="profile" className="mb-3">
+                <Tab eventKey="home" title="Праздник">
+                    <Holiday date={day} sendData={onEventCreate} />
+                </Tab>
+                <Tab eventKey="profile" title="Мероприятие">
+                    <Event date={day} sendData={onEventCreate} />
+                </Tab>
+                <Tab eventKey="contact" title="Заметка" >
+                    <Note date={day} sendData={onEventCreate} />
+                </Tab>
+            </Tabs>
+        </section>
+    </div >);
 }
 
 export default MyCalendar;

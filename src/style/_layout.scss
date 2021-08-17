@@ -1,0 +1,11 @@
+@import "./variables";
+
+#root {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.wrapper {
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+}

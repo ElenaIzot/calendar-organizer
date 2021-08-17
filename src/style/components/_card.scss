@@ -1,0 +1,32 @@
+.card {
+    color: $text-color;
+    margin: 8px auto;
+    &__date {
+        margin: 8px auto;
+        font-size: $font-size-large;
+        text-align: center;
+        &_number {
+            padding-left: $step;
+        }
+    }
+    &__title {
+        margin: 0;
+    }
+}
+
+.card-body__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form {
+    &__btns {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    &__button {
+        margin-left: $step;
+    }
+}
