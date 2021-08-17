@@ -28,6 +28,10 @@ function HolidayPage(props: { date: Date, sendData: (event: EventHoliday) => voi
         setVisible(false);
     };
 
+    function cancelAdding(): void {
+        setVisible(false);
+    };
+
 
     if (visible == true) {
         return (
@@ -65,6 +69,13 @@ function HolidayPage(props: { date: Date, sendData: (event: EventHoliday) => voi
                         className="btn"
                         type="submit"
                         value="Добавить"
+                    />
+                     <input
+                        className="btn"
+                        name="cancel"
+                        type="button"
+                        value="Отменить"
+                        onClick={cancelAdding}
                     />
                 </form>
             </div>

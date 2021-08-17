@@ -77,6 +77,14 @@ header {
   padding: 8px;
 }
 
+
+.btn_icon{
+  width: 28px;
+  height: 28px;
+  padding: 0px;
+  border: none;
+
+}
 .events {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -153,4 +161,11 @@ input::-webkit-input-placeholder {
 
 p {
   display: block
+}
+
+.content__item{
+  display: grid;
+  grid-template-columns: 8fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-row: 1fr;
 }
