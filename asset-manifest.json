@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/calendar-organizer/static/css/main.ca315288.chunk.css",
+    "main.js": "/calendar-organizer/static/js/main.2ab6cd90.chunk.js",
+    "main.js.map": "/calendar-organizer/static/js/main.2ab6cd90.chunk.js.map",
+    "runtime-main.js": "/calendar-organizer/static/js/runtime-main.5b32f32d.js",
+    "runtime-main.js.map": "/calendar-organizer/static/js/runtime-main.5b32f32d.js.map",
+    "static/css/2.c880dfa0.chunk.css": "/calendar-organizer/static/css/2.c880dfa0.chunk.css",
+    "static/js/2.09bfe1b2.chunk.js": "/calendar-organizer/static/js/2.09bfe1b2.chunk.js",
+    "static/js/2.09bfe1b2.chunk.js.map": "/calendar-organizer/static/js/2.09bfe1b2.chunk.js.map",
+    "static/js/3.757879b1.chunk.js": "/calendar-organizer/static/js/3.757879b1.chunk.js",
+    "static/js/3.757879b1.chunk.js.map": "/calendar-organizer/static/js/3.757879b1.chunk.js.map",
+    "index.html": "/calendar-organizer/index.html",
+    "static/css/2.c880dfa0.chunk.css.map": "/calendar-organizer/static/css/2.c880dfa0.chunk.css.map",
+    "static/css/main.ca315288.chunk.css.map": "/calendar-organizer/static/css/main.ca315288.chunk.css.map",
+    "static/js/2.09bfe1b2.chunk.js.LICENSE.txt": "/calendar-organizer/static/js/2.09bfe1b2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5b32f32d.js",
+    "static/css/2.c880dfa0.chunk.css",
+    "static/js/2.09bfe1b2.chunk.js",
+    "static/css/main.ca315288.chunk.css",
+    "static/js/main.2ab6cd90.chunk.js"
+  ]
+}
