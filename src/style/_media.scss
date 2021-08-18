@@ -2,7 +2,7 @@
 @media (min-width: 1200px) {
     .wrapper {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-evenly;
     }
 }
 
@@ -29,10 +29,7 @@
         display: flex;
         justify-content: space-evenly;
     }
-    .calendar {
-        padding: $step;
-        margin: 16px auto;
-    }
+   
 }
 
 /* Landscape phones and portrait tablets */
@@ -56,8 +53,7 @@
 
     .calendar {
         width: 350px;
-        padding: $step;
-        margin: 8px auto;
+       
     }
 }
 
@@ -77,11 +73,6 @@
         flex-wrap: wrap;
         align-content: space-around;
     }
-
-    .calendar {
-        padding: $step;
-        margin: 16px auto;
-    }
 }
 
 /* Portrait phones and smaller */
@@ -100,11 +91,6 @@
         flex-direction: column;
         flex-wrap: wrap;
         align-content: space-around;
-    }
-
-    .calendar {
-        padding: $step;
-        margin: 16px auto;
     }
 }
 
