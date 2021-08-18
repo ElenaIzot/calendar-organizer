@@ -28,8 +28,8 @@ function MyCalendar() {
 
     function deleteEvent(e: any): void {
         e.preventDefault();
-        saveEventsToStorage(day, [])
-        alert('Событие удалено. Обновите страницу') //нет перерисовки при удалении
+        saveEventsToStorage(day, []);
+        alert('Событие будет удалено.');
     }
 
     let renderedHoliday;
@@ -40,6 +40,7 @@ function MyCalendar() {
         let key = localStorage.key(i);
         if (key == day.toLocaleDateString()) {
             let events = JSON.parse(localStorage.getItem(`${key}`) || '[]');
+
             for (const event of events) {
                 if (isNote(event)) {
                     renderedNotes = (<div className="card">
@@ -108,6 +109,8 @@ function MyCalendar() {
                         </ul>
                     </div>
                     );
+                } else if(event == []){
+                    return <div>Пусто</div>
                 }
             }
         }
@@ -136,6 +139,7 @@ function MyCalendar() {
             {renderedHoliday}
             {renderedEvent}
             {renderedNotes}
+
         </section>
         <section className="content">
             <Tabs defaultActiveKey="profile" className="mb-3">
